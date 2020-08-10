@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.johnny</groupId>
+    <artifactId>data-structure-and-algorithm</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <url>https://eightdouble2.github.io/</url>
+    <inceptionYear>2020-Now</inceptionYear>
+    <description>数据结构与算法</description>
+
+    <developers>
+        <developer>
+            <id>johnnyhao</id>
+            <name>Johnny Hao</name>
+            <email>johnny173862903@gmail.com</email>
+        </developer>
+    </developers>
+
+    <dependencies>
+
+    </dependencies>
+</project>
