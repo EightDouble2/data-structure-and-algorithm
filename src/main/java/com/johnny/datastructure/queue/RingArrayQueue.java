@@ -7,11 +7,10 @@ import java.util.Scanner;
  *
  * 环形队列
  *
- * 队列是一个有序列表，可以用数组或链表来实现
- * 遵循先入先出的原则，即：先存入队列的数据先取出，后存入队列的数据后取出
+ * 对普通数组模拟队列进行优化优化，充分利用数组
+ * 将数组看做是一个环形的(通过取模的方式来实现即可)
  */
 public class RingArrayQueue {
-
 
     public static void main(String[] args) {
         // 创建队列
@@ -65,8 +64,6 @@ public class RingArrayQueue {
         }
     }
 }
-
-
 
 /**
  * 使用数组模拟环形队列
