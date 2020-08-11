@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Stack;
+
 /**
  * @author johnnyhao
  *
@@ -64,6 +66,150 @@ public class SingleLinkedList {
 
         singleLinkedList.list();
 
+        System.out.println("求单链表有效节点的个数");
+
+        System.out.println(getLength(singleLinkedList));
+
+        System.out.println("查找单链表中的倒数第index个结点");
+
+        System.out.println(findLastIndexNode(singleLinkedList, 2));
+
+        System.out.println("单链表反转");
+
+        System.out.println("原链表");
+
+        singleLinkedList.list();
+
+        System.out.println("反转后的链表");
+
+        reverse(singleLinkedList);
+
+        singleLinkedList.list();
+
+        System.out.println("逆序打印链表");
+
+        reversePrint(singleLinkedList);
+    }
+
+    /**
+     * 求单链表有效节点的个数
+     * @param singleLinkedList 目标链表
+     * @return 有效节点个数
+     */
+    public static int getLength(SingleLinkedListImpl singleLinkedList) {
+        // 获取链表头节点
+        HeroNode head = singleLinkedList.getHead();
+
+        // 有效节点计数器
+        int length = 0;
+
+        // 创建一个temp辅助遍历链表
+        HeroNode temp = head.getNext();
+
+        // 遍历到链表尾部
+        while(temp != null) {
+            length++;
+            temp = temp.getNext();
+        }
+        return length;
+    }
+
+    /**
+     * 查找单链表中的倒数第index个结点
+     * @param singleLinkedList 目标链表
+     * @param index 倒数节点地址
+     * @return 返回节点
+     */
+    public static HeroNode findLastIndexNode(SingleLinkedListImpl singleLinkedList, int index) {
+        // 获取链表头节点
+        HeroNode head = singleLinkedList.getHead();
+
+        // 判断如果链表为空，返回null
+        if(head.getNext() == null) {
+            return null;
+        }
+        // 先遍历一遍获取链表长度
+        int length = getLength(singleLinkedList);
+
+        // 校验index，不通过则返回null
+        if (index <=0 || index >length) {
+            return null;
+        }
+
+        // 创建一个temp辅助遍历链表
+        HeroNode temp = head.getNext();
+
+        // 遍历到倒数index个节点，返回temp
+        for (int i = 0; i < length - index; i++) {
+            temp = temp.getNext();
+        }
+        return temp;
+    }
+
+    /**
+     * 单链表反转
+     * @param singleLinkedList 目标链表
+     */
+    public static void reverse(SingleLinkedListImpl singleLinkedList) {
+        // 获取链表头节点
+        HeroNode head = singleLinkedList.getHead();
+
+        // 如果链表为空或者只有一个节点，无需反转
+        if (head.getNext() == null || head.getNext().getNext() == null) {
+            return;
+        }
+
+        // 创建一个temp辅助遍历链表
+        HeroNode temp = head.getNext();
+        // 创建一个next辅助指向temp的下一个节点
+        HeroNode next;
+        // 创建一个新的链表头，用于存放反转后的链表
+        HeroNode reverseHead = new HeroNode(0, "", "");
+
+        while(temp != null) {
+            // 先暂时保存当前节点的下一个节点，因为后面需要使用
+            next = temp.getNext();
+            // 将temp的下一个节点指向新的链表的最前端
+            temp.setNext(reverseHead.getNext());
+            // 将temp连接到新的链表上
+            reverseHead.setNext(temp);
+            // 让temp后移
+            temp = next;
+        }
+        //将head.next指向reverseHead.next, 实现单链表的反转
+        head.setNext(reverseHead.getNext());
+    }
+
+    /**
+     * 逆序打印链表
+     * - 反转列表后直接打印，但会破坏原链表
+     * - 利用栈先进后出的特性，将所有节点压入栈，实现逆序打印
+     * @param singleLinkedList 目标链表
+     */
+    public static void reversePrint(SingleLinkedListImpl singleLinkedList) {
+        // 获取链表头节点
+        HeroNode head = singleLinkedList.getHead();
+
+        // 如果链表为空，无需打印
+        if (head.getNext() == null) {
+            return;
+        }
+
+        // 创建一个栈，压入各个节点
+        Stack<HeroNode> stack = new Stack<HeroNode>();
+        // 创建一个temp辅助遍历链表
+        HeroNode temp = head.getNext();
+
+        // 将所有节点压入栈中
+        while (temp != null) {
+            stack.push(temp);
+            temp = temp.getNext();
+        }
+
+        // 循环出栈打印
+        while (stack.size() > 0) {
+            System.out.println(stack.pop());
+        }
     }
 }
 
@@ -104,6 +250,7 @@ class HeroNode {
 /**
  * 定义单链表
  */
+@Getter
 class SingleLinkedListImpl {
     /**
      * 初始化头节点，定义链表头部，不存放具体数据
