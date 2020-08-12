@@ -285,12 +285,12 @@ class SingleLinkedListImpl {
      */
     public void addByNo(HeroNode heroNode) {
 
-        // 创建一个temp辅助遍历链表，用于找到目标位置的前一个节点
+        // 创建一个temp辅助遍历链表，用于找到目标节点
         HeroNode temp = head;
         // flag标志目标的编号是否存在
         boolean flag = false;
 
-        // 遍历链表，找到目标节点
+        // 遍历链表，找到目标节点的前一个节点
         // 找到最后节点跳出循环
         while (temp.getNext() != null) {
             // 找到目标位置，就在temp的后面插入
@@ -369,7 +369,7 @@ class SingleLinkedListImpl {
         // flag标志目标节点是否存在
         boolean flag = false;
 
-        // 遍历链表，找到目标节点
+        // 遍历链表，找到目标节点的前一个节点
         // 找到最后节点跳出循环
         while(temp.getNext() != null) {
             if(temp.getNext().getNo() == no) {
