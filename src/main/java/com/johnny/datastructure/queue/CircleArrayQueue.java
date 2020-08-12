@@ -10,11 +10,11 @@ import java.util.Scanner;
  * 对普通数组模拟队列进行优化优化，充分利用数组
  * 将数组看做是一个环形的(通过取模的方式来实现即可)
  */
-public class RingArrayQueue {
+public class CircleArrayQueue {
 
     public static void main(String[] args) {
         // 创建队列
-        RingArrayQueueImpl arrayQueue = new RingArrayQueueImpl(5);
+        CircleArrayQueueImpl arrayQueue = new CircleArrayQueueImpl(5);
 
         // 输出菜单
         char key;
@@ -68,7 +68,7 @@ public class RingArrayQueue {
 /**
  * 使用数组模拟环形队列
  */
-class RingArrayQueueImpl {
+class CircleArrayQueueImpl {
 
     /**
      * 数组最大容量
@@ -94,7 +94,7 @@ class RingArrayQueueImpl {
      * 创建队列的构造器
      * @param maxSize 数组最大容量
      */
-    public RingArrayQueueImpl(int maxSize) {
+    public CircleArrayQueueImpl(int maxSize) {
         this.maxSize = maxSize;
         arr = new int[this.maxSize];
         front = 0;
