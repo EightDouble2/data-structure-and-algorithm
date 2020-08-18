@@ -10,7 +10,7 @@ import java.util.Random;
 public class SortTest {
 
     public static void main(String[] args) {
-        int maxSize = 100000;
+        int maxSize = 1000000;
 
         int[] array = new int[maxSize];
         for (int i = 0; i < maxSize; i++) {
@@ -64,5 +64,10 @@ public class SortTest {
         RadixSort.sortImprove1(array.clone());
         endTime = System.currentTimeMillis();
         System.out.printf("  基数排序改进\t%d\n", endTime - startTime);
+
+        startTime = System.currentTimeMillis();
+        HeapSort.sort(array.clone());
+        endTime = System.currentTimeMillis();
+        System.out.printf("- 堆排序\t%d\n", endTime - startTime);
     }
 }
